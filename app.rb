@@ -10,9 +10,9 @@ enable  :sessions
 def hot_or_not(guessed_number, random_number)
 
   if guessed_number < random_number    # The guess is too cold
-    message = "the guess is too cold, bro. click the back button to try again."
+    message = "the guess is too cold, bro. try again."
   elsif guessed_number > random_number # The guess is too hot
-    message = "the guess is too hot, man. click the back button to guess again."
+    message = "the guess is too hot, man. try again."
   else                       # The guess is juuuust right
     message = "damn it! now you've gone and ended the game."
   end
@@ -42,6 +42,7 @@ post('/guess') do
   guessed_number = (params[:number]).to_i
 
   # return the message on screen from method
-  answer = hot_or_not(guessed_number, session["random_number"])
+  @answer = hot_or_not(guessed_number, session["random_number"])
 
+  erb :home
 end

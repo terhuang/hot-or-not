@@ -1,0 +1,58 @@
+<%#
+  ERB stands for "Embedded Ruby". It's a `templating` library that lets you mix
+  in ruby code with plain text.
+
+  In this case, we're embedding ruby into HTML so it can be displayed all
+  pretty-like to the browser!
+
+  See this ERB cheatsheet for a syntax overview: https://bmark.us/bmark/readable/d3d7516a76f3b3
+%>
+
+<h1>welcome to the game hot or not. </h1>
+<%# `h1` tags denote the most important heading on a page:
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements %>
+
+<p>it's not the hot or not that you're thinking of; you just guess a number in between 0 and 1000.</p>
+<%#
+We can access instance variables defined within our route.
+
+`<%=` says "replace me with whatever the ruby inside me returns." In this
+case, it'll be whatever @words is set to in the `get '/'` or `post '/reversify'
+routes.
+%>
+
+<!-- <p> -->
+  <!-- <a href="/">Tell Me More!</a> or <a href="/tweets">See Some Tweets</a> -->
+  <%# `a` tags are used to create links. The `href` attribute says what web
+       page the browser will be sent to upon click; while the content is the
+       words that will display to the user:
+
+       https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a %>
+<!-- </p> -->
+
+<%# `p` tags surround a paragraph of text:
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p %>
+
+
+<form method="POST" action="/guess" input type="hidden" value="999">
+
+
+  <%# `form` tags create an interactive section of the website a user
+       can fill out:
+         https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form 
+
+       The `method` atttribute is used to state which kind of HTTP request is
+       sent when the form is submitted. `action` says which `URL` the request
+       is sent too. %>
+
+  <textarea name="number"><%=@number%></textarea><br />
+  <%# `textarea` tags let users fill in oddles of text. The name tells what key
+       the value the user inserts will be in the `params` variable:
+         https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea %>
+
+
+  <button>was I right?!?!?!?!?!?!?!?</button>
+  <%# `button` tags... kinda say what they do... They can be used to `submit` a
+      form:
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button %>
+</form>

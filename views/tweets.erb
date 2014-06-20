@@ -1,0 +1,26 @@
+<form method="GET" action="/tweets">
+  <!-- This form is going to be sent to our `get '/tweets'` route. -->
+  <label>Twitter Screen Name:
+    <!-- `label` tags make it so when a user clicks the text next to a `field`
+        the field becomes active:
+          https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label -->
+    <input type="text" name="screen_name" /></label>
+  <!--
+    `input` tags are used to create fields a user can enter data into. The
+        `type` attribute states what kind of text the field will accept (text, in
+        this case) while the `name` says what key you can use to pull data out
+        of the `params` hash:
+          https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input -->
+  <button>Let's See Some Tweets!</button>
+</form>
+
+<% @tweets.each do |tweet| %>
+  <!-- Here's where embedded ruby really shines! We can loop over the `@tweets`
+      array we defined in our `get '/tweets'` route.  -->
+
+  <p><%= tweet["text"] %> - <%= tweet["user"]["screen_name"] %></p>
+  <!-- such beauty
+             very web 2.0
+        much social
+            wow -->
+<% end %>
